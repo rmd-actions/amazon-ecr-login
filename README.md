@@ -53,7 +53,7 @@ For more information on why this change is being made, see [Masking Docker Crede
 #### Before each of the following examples, make sure to include the following:
 ```yaml
       - name: Checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4 # More information on this action can be found below in the 'AWS Credentials' section
@@ -390,18 +390,6 @@ The following minimum permissions are required for pushing an image to an ECR Pu
 ```
 
 ## Troubleshooting
-
-### Configure credentials
-
-`Inaccessible host: 'api.ecr-public.aws-region-1.amazonaws.com' at port 'undefined'. This service may not be available in the 'aws-region-1' region.`
-
-- The `AWS_DEFAULT_REGION` environment variable is configured as a region where ECR Public isn't available.
-- ECR Public can only be logged into from the `us-east-1` region. In the `aws-actions/configure-aws-credentials` action, the `aws-region` input must be `us-east-1`.
-
-`GetAuthorizationToken command is only supported in us-east-1.`
-
-- The `AWS_DEFAULT_REGION` environment variable is configured as `us-west-2`.
-- ECR Public can only be logged into from the `us-east-1` region. In the `aws-actions/configure-aws-credentials` action, the `aws-region` input must be `us-east-1`.
 
 ### Inputs
 
